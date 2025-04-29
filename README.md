@@ -4,14 +4,16 @@
 
 ## axios
 
-``
+
 <script>
 	$(document).ready(function () {
+```bash
 		$.ajaxSetup({
 			headers: {
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			}
 		});
+  ```
         // ------------------------ Initialize Datatable ------------------------
 		let table = $('#dataID').DataTable({
 			processing: true,
