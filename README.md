@@ -1,7 +1,7 @@
 
 # CRUD Template
 
-## cdn
+### cdn
 ```bash
 https://cdnjs.cloudflare.com/ajax/libs/axios/1.9.0/axios.min.js
 ```
@@ -13,7 +13,96 @@ https://cdn.datatables.net/1.13.11/css/dataTables.bootstrap5.min.css
 https://cdn.datatables.net/1.13.11/js/jquery.dataTables.min.js
 https://cdn.datatables.net/1.13.11/js/dataTables.bootstrap5.min.js
 ```
+### style button pagination datatables 2.2.2
+```bash
+table.table thead th {
+	vertical-align: middle;
+	text-transform: uppercase;
+}
 
+table {
+	font-size: 0.75rem;
+}
+
+/* Mengatur ul container */
+.dataTables_paginate .pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	list-style: none;
+	padding: 0;
+	margin: 20px 0;
+}
+
+/* Mengatur setiap item pagination */
+.dataTables_paginate .pagination .page-item {
+	margin: 0 4px;
+}
+
+.dataTables_paginate .pagination .page-link {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 36px;
+	height: 36px;
+	font-size: 14px;
+	color: #333;
+	text-decoration: none;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 50%;
+	transition: all 0.3s ease;
+}
+
+/* Efek hover pada item pagination */
+.dataTables_paginate .pagination .page-link:hover {
+	background-color: #f0f0f0;
+	border-color: #ccc;
+}
+
+/* Mengatur item pagination yang aktif */
+.dataTables_paginate .pagination .page-item.active .page-link {
+	background-color: #007bff;
+	border-color: #007bff;
+	color: #fff;
+}
+
+/* Mengatur tombol previous dan next */
+.dataTables_paginate .pagination .page-item.previous,
+.dataTables_paginate .pagination .page-item.next {
+	margin: 0 8px;
+}
+
+.dataTables_paginate .pagination .page-item.previous .page-link,
+.dataTables_paginate .pagination .page-item.next .page-link {
+	width: 36px;
+	height: 36px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 50%;
+	color: #333;
+	transition: all 0.3s ease;
+}
+
+.dataTables_paginate .pagination .page-item.previous .page-link:hover,
+.dataTables_paginate .pagination .page-item.next .page-link:hover {
+	background-color: #f0f0f0;
+	border-color: #ccc;
+}
+
+/* Menonaktifkan tombol previous atau next */
+.dataTables_paginate .pagination .page-item.disabled .page-link {
+	background-color: #f9f9f9;
+	border-color: #ddd;
+	color: #ccc;
+	cursor: not-allowed;
+}
+
+.dataTables_paginate .pagination .page-item.disabled .page-link:hover {
+	background-color: #f9f9f9;
+	border-color: #ddd;
+}
+```
 ### ajax setup
 ```bash
 		$.ajaxSetup({
