@@ -1,8 +1,18 @@
 
 # CRUD Template
 
-
-## axios
+## cdn
+```bash
+https://cdnjs.cloudflare.com/ajax/libs/axios/1.9.0/axios.min.js
+```
+```bash
+https://cdn.jsdelivr.net/npm/sweetalert2@11
+```
+```bash
+https://cdn.datatables.net/1.13.11/css/dataTables.bootstrap5.min.css
+https://cdn.datatables.net/1.13.11/js/jquery.dataTables.min.js
+https://cdn.datatables.net/1.13.11/js/dataTables.bootstrap5.min.js
+```
 
 ### ajax setup
 ```bash
