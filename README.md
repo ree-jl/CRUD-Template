@@ -13,7 +13,7 @@ https://cdn.datatables.net/1.13.11/css/dataTables.bootstrap5.min.css
 https://cdn.datatables.net/1.13.11/js/jquery.dataTables.min.js
 https://cdn.datatables.net/1.13.11/js/dataTables.bootstrap5.min.js
 ```
-### style button pagination datatables 2.2.2
+### style button pagination datatables 1.13.11
 ```bash
 table.table thead th {
 	vertical-align: middle;
