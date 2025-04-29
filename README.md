@@ -10,7 +10,7 @@
 			headers: {
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			}
-		});
+		})
 ```
 ### Initialize Datatable
 ```bash
@@ -31,7 +31,7 @@
 					next: "<i class='bi bi-chevron-right'>",
 				},
 			},
-		});
+		})
 ```
 ### TOAST Function
 ```bash
@@ -43,7 +43,7 @@
 				position: 'top-right',
 				showHideTransition: 'slide',
 				hideAfter: 3000
-			});
+			})
 		}
 ```
 ### Initialize select2
@@ -70,7 +70,7 @@
 						cache: true
 					},
 					minimumInputLength: 0
-				});
+				})
 			}
 		}
 ```
@@ -88,7 +88,7 @@
 			initializeSelect2('#nama_instansi', "{{ route('admin.instansis') }}", 'Pilih Instansi');
 	
 			$('#addDataModal').modal('show');
-		});
+		})
 ```
 ### show btn modal edit
 ```bash
@@ -128,7 +128,7 @@
 				.catch(error => {
 					showToast('error', 'Gagal mengambil data user.');
 				});
-		});
+		})
 ```
 ### Save to Database
 ```bash
@@ -183,7 +183,7 @@
 			.finally(() => {
 				saveButton.prop('disabled', false).text('Simpan');
 			});
-		});
+		})
 ```
 ### Button Delete Confirmation with sweetalert2
 ```bash
@@ -219,5 +219,5 @@
 						});
 				}
 			});
-		});
+		})
 ```
