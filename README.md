@@ -4,16 +4,16 @@
 
 ## axios
 
-
-<script>
-	$(document).ready(function () {
+### ajax setup
 ```bash
 		$.ajaxSetup({
 			headers: {
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			}
 		});
-  ```
+```
+### Initialize Datatable
+```bash
         // ------------------------ Initialize Datatable ------------------------
 		let table = $('#dataID').DataTable({
 			processing: true,
@@ -33,7 +33,9 @@
 				},
 			},
 		});
-        // ------------------------ TOAST Function ------------------------
+```
+### TOAST Function
+```bash
 		function showToast(type, message) {
 			$.toast({
 				heading: type === 'success' ? 'Sukses' : 'Error',
@@ -44,7 +46,9 @@
 				hideAfter: 3000
 			});
 		}
-        // ------------------------ Initialize select2 ------------------------
+```
+### Initialize select2
+```bash
         function initializeSelect2(selector, url, placeholder = 'Pilih Data') {
 			if ($(selector).hasClass('select2-hidden-accessible')) {
 				$(selector).empty();
@@ -70,7 +74,9 @@
 				});
 			}
 		}
-        // ------------------------ show modal add ------------------------
+```
+### show modal add
+```bash
         $('#btn_add').on('click', function () {
 			$('#addDataForm')[0].reset();
 			$('.invalid-feedback').hide();
@@ -84,7 +90,9 @@
 	
 			$('#addDataModal').modal('show');
 		});
-        // ------------------------ show btn modal edit ------------------------
+```
+### show btn modal edit
+```bash
         $(document).on('click', '.btn-edit', function () {
 			const userId = $(this).data('id');
 	
@@ -122,8 +130,9 @@
 					showToast('error', 'Gagal mengambil data user.');
 				});
 		});
-
-        // ------------------------ save to db ------------------------
+```
+### Save to Database
+```bash
         $('#saveData').on('click', function () {
 			let saveButton = $(this);
 			saveButton.prop('disabled', true).text('Proses...');
@@ -176,7 +185,9 @@
 				saveButton.prop('disabled', false).text('Simpan');
 			});
 		});
-        // ------------------------ btn delete confirmation sweetalert2 ------------------------
+```
+### Button Delete Confirmation with sweetalert2
+```bash
         $(document).on('click', '.btn-delete', function () {
 			const userId = $(this).data('id');
 	
@@ -210,6 +221,4 @@
 				}
 			});
 		});
-    });
-</script>
-``
+```
