@@ -14,7 +14,6 @@
 ```
 ### Initialize Datatable
 ```bash
-        // ------------------------ Initialize Datatable ------------------------
 		let table = $('#dataID').DataTable({
 			processing: true,
 			serverSide: true,
