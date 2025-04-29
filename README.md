@@ -87,32 +87,32 @@ https://cdn.datatables.net/1.13.11/js/dataTables.bootstrap5.min.js
 ### show modal add
 ```bash
         $('#btn_add').on('click', function () {
-			$('#addDataForm')[0].reset();
-			$('.invalid-feedback').hide();
-			$('.form-control').removeClass('is-invalid');
+			$('#addDataForm')[0].reset()
+			$('.invalid-feedback').hide()
+			$('.form-control').removeClass('is-invalid')
 	
-			$('#addDataModalLabel').text('Tambah User');
-			$('#addDataForm').removeData('id');
+			$('#addDataModalLabel').text('Tambah User')
+			$('#addDataForm').removeData('id')
 	
-			initializeSelect2('#level', "{{ route('admin.levels') }}", 'Pilih Level');
-			initializeSelect2('#nama_instansi', "{{ route('admin.instansis') }}", 'Pilih Instansi');
+			initializeSelect2('#level', "{{ route('admin.levels') }}", 'Pilih Level')
+			initializeSelect2('#nama_instansi', "{{ route('admin.instansis') }}", 'Pilih Instansi')
 	
-			$('#addDataModal').modal('show');
+			$('#addDataModal').modal('show')
 		})
 ```
 ### show btn modal edit
 ```bash
         $(document).on('click', '.btn-edit', function () {
-			const userId = $(this).data('id');
+			const userId = $(this).data('id')
 	
 			axios.get(`/admin/user/${userId}/edit`)
 				.then(response => {
-					const user = response.data;
+					const user = response.data
 	
-					$('#addDataModalLabel').text('Edit User');
-					$('#addDataForm').data('id', user.id);
-					$('#name').val(user.name);
-					$('#email').val(user.email);
+					$('#addDataModalLabel').text('Edit User')
+					$('#addDataForm').data('id', user.id)
+					$('#name').val(user.name)
+					$('#email').val(user.email)
 	
 					if (!$('#level').hasClass('select2-hidden-accessible')) {
 						initializeSelect2('#level', "{{ route('admin.levels') }}", 'Pilih Level');
@@ -120,47 +120,47 @@ https://cdn.datatables.net/1.13.11/js/dataTables.bootstrap5.min.js
 					}
 	
 					if ($('#level').find("option[value='" + user.level + "']").length) {
-						$('#level').val(user.level).trigger('change');
+						$('#level').val(user.level).trigger('change')
 					} else {
-						const newOption = new Option(user.level_text, user.level, true, true);
-						$('#level').append(newOption).trigger('change');
+						const newOption = new Option(user.level_text, user.level, true, true)
+						$('#level').append(newOption).trigger('change')
 					}
 	
 					if ($('#nama_instansi').find("option[value='" + user.instansi_id + "']").length) {
-						$('#nama_instansi').val(user.instansi_id).trigger('change');
+						$('#nama_instansi').val(user.instansi_id).trigger('change')
 					} else {
 						const newOption = new Option(user.instansi_name, user.instansi_id, true, true);
-						$('#nama_instansi').append(newOption).trigger('change');
+						$('#nama_instansi').append(newOption).trigger('change')
 					}
 	
-					$('#addDataModal').modal('show');
+					$('#addDataModal').modal('show')
 				})
 				.catch(error => {
-					showToast('error', 'Gagal mengambil data user.');
+					showToast('error', 'Gagal mengambil data user.')
 				});
 		})
 ```
 ### Save to Database
 ```bash
         $('#saveData').on('click', function () {
-			let saveButton = $(this);
-			saveButton.prop('disabled', true).text('Proses...');
+			let saveButton = $(this)
+			saveButton.prop('disabled', true).text('Proses...')
 	
 			let formData = {
 				name: $('#name').val(),
 				email: $('#email').val(),
 				level: $('#level').val(),
 				nama_instansi: $('#nama_instansi').val()
-			};
-	
-			const password = $('#password').val();
-			if (password) {
-				formData.password = password;
 			}
 	
-			const userId = $('#addDataForm').data('id');
-			const url = userId ? `/admin/user/${userId}` : "{{ route('admin.user.store') }}";
-			const method = userId ? 'put' : 'post';
+			const password = $('#password').val()
+			if (password) {
+				formData.password = password
+			}
+	
+			const userId = $('#addDataForm').data('id')
+			const url = userId ? `/admin/user/${userId}` : "{{ route('admin.user.store') }}"
+			const method = userId ? 'put' : 'post'
 	
 			axios({
 				method: method,
@@ -168,37 +168,37 @@ https://cdn.datatables.net/1.13.11/js/dataTables.bootstrap5.min.js
 				data: formData
 			})
 			.then(response => {
-				showToast('success', response.data.message); // ambil message dari backend
+				showToast('success', response.data.message)
 	
-				$('#addDataForm')[0].reset();
-				$('#addDataForm').removeData('id');
-				$('#addDataModal').modal('hide');
-				table.ajax.reload(null, false);
+				$('#addDataForm')[0].reset()
+				$('#addDataForm').removeData('id')
+				$('#addDataModal').modal('hide')
+				table.ajax.reload(null, false)
 			})
 			.catch(error => {
 				if (error.response && error.response.status === 422) {
-					const errors = error.response.data.errors;
+					const errors = error.response.data.errors
 	
-					$('.invalid-feedback').hide();
-					$('.form-control').removeClass('is-invalid');
+					$('.invalid-feedback').hide()
+					$('.form-control').removeClass('is-invalid')
 	
 					Object.keys(errors).forEach(field => {
-						$(`#${field}-error`).text(errors[field][0]).show();
-						$(`#${field}`).addClass('is-invalid');
+						$(`#${field}-error`).text(errors[field][0]).show()
+						$(`#${field}`).addClass('is-invalid')
 					});
 				} else {
-					showToast('error', 'Gagal menyimpan data. Silakan coba lagi.');
+					showToast('error', 'Gagal menyimpan data. Silakan coba lagi.')
 				}
 			})
 			.finally(() => {
-				saveButton.prop('disabled', false).text('Simpan');
+				saveButton.prop('disabled', false).text('Simpan')
 			});
 		})
 ```
 ### Button Delete Confirmation with sweetalert2
 ```bash
         $(document).on('click', '.btn-delete', function () {
-			const userId = $(this).data('id');
+			const userId = $(this).data('id')
 	
 			Swal.fire({
 				title: 'Apakah Anda yakin?',
@@ -225,9 +225,9 @@ https://cdn.datatables.net/1.13.11/js/dataTables.bootstrap5.min.js
 								'Gagal!',
 								'Terjadi kesalahan saat menghapus user.',
 								'error'
-							);
-						});
+							)
+						})
 				}
-			});
+			})
 		})
 ```
